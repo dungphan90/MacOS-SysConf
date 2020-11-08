@@ -7,9 +7,20 @@ alias top="bpytop"
 alias dgit='git --git-dir ~/.dotfiles/.git --work-tree=$HOME'        # Detached working tree to Git the HOME Directory
 alias vim="nvim"
 
+# Identify OS
+export SYSTEMOS=`uname -s`
+
 # Set PATH
 export PATH="/usr/local/opt/qt/bin:$PATH"
 export PATH="$HOME/.emacs.d/bin:$PATH"
+
+# NVIDIA CUDA PATH
+
+if [ "$SYSTEMOS" = "Linux" ]; then
+  export PATH=/usr/local/cuda-11.1/bin${PATH:+:${PATH}}
+  export LD_LIBRARY_PATH=/usr/local/cuda-11.1/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
+  alias setup_deeplearning_python="source ${HOME}/PyVEnvs/DeepLearning/bin/activate"
+fi
 
 # FNAL connections
 function minosgpvm() {
@@ -48,8 +59,6 @@ function cheat() {
 }
 
 # Using PyEnv
-# First check if the HOST is Linux
-export SYSTEMOS=`uname -s`
 if [ "$SYSTEMOS" = "Linux" ]; then
     export PYENV_ROOT="$HOME/.pyenv"
     export PATH="$PYENV_ROOT/bin:$PATH"
@@ -64,11 +73,11 @@ function setup_scientific_python() {
 }
 
 function labnote() {
-  if [ $# -gt 0 ];
-  then 
+  if [ $# -gt 0 ]; then 
     cd $1
   else 
     cd ~/PyVEnvs/Notebooks/
   fi
   jupyter lab
 }
+
