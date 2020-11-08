@@ -19,7 +19,6 @@ export PATH="$HOME/.emacs.d/bin:$PATH"
 if [ "$SYSTEMOS" = "Linux" ]; then
   export PATH=/usr/local/cuda-11.1/bin${PATH:+:${PATH}}
   export LD_LIBRARY_PATH=/usr/local/cuda-11.1/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
-  alias setup_deeplearning_python="source ${HOME}/PyVEnvs/DeepLearning/bin/activate"
 fi
 
 # FNAL connections
@@ -70,6 +69,11 @@ fi
 # Setup Scientific Python Environment
 function setup_scientific_python() {
   source $HOME/PyVEnvs/Scientific/bin/activate
+}
+
+# Setup Deep Learning Python Environment
+function setup_deeplearning_python() {
+  source ${HOME}/PyVEnvs/DeepLearning/bin/activate
 }
 
 function labnote() {
