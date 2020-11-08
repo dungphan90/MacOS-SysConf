@@ -1,9 +1,17 @@
 #!/bin/bash
 alias kinit='kinit ${USER}@FNAL.GOV'
-alias ll="ls -laGh"
-alias zenv="vim ~/.zenv.sh"
+alias ll="ls -lGh"
+alias vim-zenv="vim ~/.zenv.sh"
+alias code-zenv="code ~/.zenv.sh"
+alias top="bpytop"
+alias dgit='git --git-dir ~/.dotfiles/.git --work-tree=$HOME'        # Detached working tree to Git the HOME Directory
+alias vim="nvim"
 
+# Set PATH
+export PATH="/usr/local/opt/qt/bin:$PATH"
+export PATH="$HOME/.emacs.d/bin:$PATH"
 
+# FNAL connections
 function minosgpvm() {
     if ! klist -s
     then
@@ -34,26 +42,19 @@ function novagpvm() {
 
 }
 
-export PATH=/Users/dphan/Library/Python/3.8/bin:${PATH}
-
-function setup_sciPyEnv() {
-    source ~/Utilities/PyEnvs/ScientificComputing/bin/activate
-}
-
-function run_pynote() {
-    cd ~/Utilities/PyEnvs/Notebooks
-    jupyter lab
-}
-
+# Utility functions
 function cheat() {
   curl cheat.sh/$1
 }
 
-export PATH="/usr/local/opt/qt/bin:$PATH"
-export PATH="$HOME/.emacs.d/bin:$PATH"
-
-# Using PyEnv Python 3.7.3
+# Using PyEnv
+# First check if the HOST is Linux
+export SYSTEMOS=`uname -s`
+if [ "$SYSTEMOS" = "Linux" ]; then
+    export PYENV_ROOT="$HOME/.pyenv"
+    export PATH="$PYENV_ROOT/bin:$PATH"
+fi
 if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
 fi
-alias dgit='git --git-dir ~/.dotfiles/.git --work-tree=$HOME'
+
