@@ -6,6 +6,7 @@ alias code-zenv="code ~/.zenv.sh"
 alias top="bpytop"
 alias dgit='git --git-dir ~/.dotfiles/.git --work-tree=$HOME'        # Detached working tree to Git the HOME Directory
 alias vim="nvim"
+alias docker="sudo docker"
 
 # Identify OS
 export SYSTEMOS=`uname -s`
