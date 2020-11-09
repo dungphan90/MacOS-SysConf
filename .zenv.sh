@@ -15,7 +15,6 @@ export PATH="/usr/local/opt/qt/bin:$PATH"
 export PATH="$HOME/.emacs.d/bin:$PATH"
 
 # NVIDIA CUDA PATH
-
 if [ "$SYSTEMOS" = "Linux" ]; then
   export PATH=/usr/local/cuda-11.1/bin${PATH:+:${PATH}}
   export LD_LIBRARY_PATH=/usr/local/cuda-11.1/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
@@ -69,6 +68,13 @@ fi
 # Setup Scientific Python Environment
 function setup_scientific_python() {
   source $HOME/PyVEnvs/Scientific/bin/activate
+}
+
+# Setup ROOT-system
+function setup_root_system() {
+  setup_scientific_python
+  source /Users/dphan/ROOT-system/install/bin/thisroot.sh
+  alias root="root -l"
 }
 
 # Setup Deep Learning Python Environment
