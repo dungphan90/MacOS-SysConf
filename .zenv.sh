@@ -73,7 +73,13 @@ function setup_scientific_python() {
 # Setup ROOT-system
 function setup_root_system() {
   setup_scientific_python
-  source /Users/dphan/ROOT-system/install/bin/thisroot.sh
+  if [ "$SYSTEMOS" = "Linux" ]; then
+    export ROOT_INSTALL=$HOME/ROOT-system/root
+  else
+    export ROOT_INSTALL=$HOME/ROOT-system/install
+  fi
+
+  source $ROOT_INSTALL/bin/thisroot.sh
   alias root="root -l"
 }
 
