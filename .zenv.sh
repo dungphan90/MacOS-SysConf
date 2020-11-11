@@ -10,6 +10,16 @@ alias vim="nvim"
 # Identify OS
 export SYSTEMOS=`uname -s`
 
+# CLion on MacOS
+if [ "$SYSTEMOS" = "Darwin" ]; then
+  alias clion="/Applications/CLion.app/Contents/MacOS/clion"
+fi
+
+# Neofetch
+if [ "$SYSTEMOS" = "Darwin" ]; then
+  alias neofetch="neofetch --iterm2 ~/.girl.jpg --size 19%"
+fi
+
 # Set PATH
 export PATH="/usr/local/opt/qt/bin:$PATH"
 export PATH="$HOME/.emacs.d/bin:$PATH"
