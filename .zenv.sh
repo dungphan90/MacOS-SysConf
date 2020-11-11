@@ -6,6 +6,7 @@ alias code-zenv="code ~/.zenv.sh"
 alias top="bpytop"
 alias dgit='git --git-dir ~/.dotfiles/.git --work-tree=$HOME'        # Detached working tree to Git the HOME Directory
 alias vim="nvim"
+alias docker="sudo docker"
 
 # Identify OS
 export SYSTEMOS=`uname -s`
@@ -83,7 +84,13 @@ function setup_scientific_python() {
 # Setup ROOT-system
 function setup_root_system() {
   setup_scientific_python
-  source /Users/dphan/ROOT-system/install/bin/thisroot.sh
+  if [ "$SYSTEMOS" = "Linux" ]; then
+    export ROOT_INSTALL=$HOME/ROOT-system/root
+  else
+    export ROOT_INSTALL=$HOME/ROOT-system/install
+  fi
+
+  source $ROOT_INSTALL/bin/thisroot.sh
   alias root="root -l"
 }
 
