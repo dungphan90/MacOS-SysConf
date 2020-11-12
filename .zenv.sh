@@ -6,13 +6,27 @@ alias code-zenv="code ~/.zenv.sh"
 alias top="bpytop"
 alias dgit='git --git-dir ~/.dotfiles/.git --work-tree=$HOME'        # Detached working tree to Git the HOME Directory
 alias vim="nvim"
-alias docker="sudo docker"
 
 # Vagrant: disable VirtualBox auto-sync globally
 export VAGRANT_DISABLE_VBOXSYMLINKCREATE=1
 
 # Identify OS
 export SYSTEMOS=`uname -s`
+
+# Docker on Linux
+if [ "$SYSTEMOS" = "Linux" ]; then
+  alias docker="sudo docker"
+fi
+
+# CLion on MacOS
+if [ "$SYSTEMOS" = "Darwin" ]; then
+  alias clion="/Applications/CLion.app/Contents/MacOS/clion"
+fi
+
+# Neofetch
+if [ "$SYSTEMOS" = "Darwin" ]; then
+  alias neofetch="neofetch --iterm2 ~/.girl.jpg --size 19%"
+fi
 
 # Set PATH
 export PATH="/usr/local/opt/qt/bin:$PATH"
