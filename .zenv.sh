@@ -8,6 +8,9 @@ alias dgit='git --git-dir ~/.dotfiles/.git --work-tree=$HOME'        # Detached 
 alias vim="nvim"
 alias docker="sudo docker"
 
+# Vagrant: disable VirtualBox auto-sync globally
+export VAGRANT_DISABLE_VBOXSYMLINKCREATE=1
+
 # Identify OS
 export SYSTEMOS=`uname -s`
 
